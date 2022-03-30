@@ -5,6 +5,7 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
 {
     public int peaches = 2;
     public int apples = 1;
+    public int grapes = 1;
     public GameObject theBroom;
     public GameObject theNotes;
     public GameObject theSweepingPoint;
@@ -16,7 +17,7 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
 
     private TextMeshPro utteranceLine;
     private GameObject utteranceBubble;
-    private TextMesh peachLine, appleLine;
+    private TextMesh peachLine, appleLine, grapeLine;
     private IDialogSystem partner;
 
     public string[] utterances =
@@ -39,8 +40,8 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
         "What a pity!!! None left!",
         "Waiting for a customer..." // 16
     };
-    
-   
+
+
     void Start()
     {
         theStoreEntrance = GameObject.Find("storeEntrance");
@@ -49,15 +50,19 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
         utteranceLine = utteranceBubble.transform.GetChild(0).GetComponent<TextMeshPro>();
         peachLine = GameObject.Find("PEACH").transform.GetChild(0).GetComponent<TextMesh>();
         appleLine = GameObject.Find("APPLE").transform.GetChild(0).GetComponent<TextMesh>();
+        grapeLine = GameObject.Find("GRAPE").transform.GetChild(0).GetComponent<TextMesh>();
 
         peachLine.text = "x " + peaches;
         appleLine.text = "x " + apples;
+        grapeLine.text = "x " + grapes;
+
     }
 
     public bool CheckExistences(string item)
     {
         if (item == "APPLE") return apples > 0;
         if (item == "PEACH") return peaches > 0;
+        if (item == "GRAPE") return grapes > 0;
         return false;
     }
 
@@ -69,17 +74,18 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
         {
             case "APPLE": apples--; appleLine.text = "x " + apples; return true;
             case "PEACH": peaches--; peachLine.text = "x " + peaches; return true;
+            case "GRAPE": grapes--; grapeLine.text = "x " + grapes; return true;
             default: return false;
         }
     }
 
-    public void SetUtterance (int index)
+    public void SetUtterance(int index)
     {
         utteranceLine.text = utterances[index];
         utteranceBubble.SetActive(true);
     }
 
-    public void ClearUtterance ()
+    public void ClearUtterance()
     {
         utteranceLine.text = "";
         utteranceBubble.SetActive(false);
@@ -131,7 +137,7 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
 
     public string Ask(int index, bool utter)
     {
-        if (partner==null)
+        if (partner == null)
         {
             Debug.Log("Cannot ask since no partner known");
             return null;

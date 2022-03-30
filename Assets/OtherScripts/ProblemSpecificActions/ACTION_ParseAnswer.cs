@@ -6,13 +6,14 @@ public class ACTION_ParseAnswer : Action
     public string keyAnswer;
     public string keyoutProductRequested; // this is an out parameter
 
-    public ACTION_ParseAnswer(string keyAnswer, string keyoutProductRequested) {
+    public ACTION_ParseAnswer(string keyAnswer, string keyoutProductRequested)
+    {
         this.keyAnswer = keyAnswer;
         this.keyoutProductRequested = keyoutProductRequested;
     }
 
 
-    public override Status OnTick ()
+    public override Status OnTick()
     {
         string itemRequested = null;
 
@@ -24,6 +25,8 @@ public class ACTION_ParseAnswer : Action
             itemRequested = "APPLE";
         else if (answer.ToUpper().Contains("PEACH"))
             itemRequested = "PEACH";
+        else if (answer.ToUpper().Contains("GRAPE"))
+            itemRequested = "GRAPE";
 
         if (itemRequested != null)
         {
@@ -33,6 +36,6 @@ public class ACTION_ParseAnswer : Action
         else return Status.FAILED;
     }
 
-    
+
 
 }
