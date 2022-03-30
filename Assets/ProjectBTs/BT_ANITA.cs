@@ -41,6 +41,11 @@ public class BT_ANITA : BehaviourTree
             );
 
         main.AddChild(
+            new CONDITION_CheckExistences("APPLE"),
+            new BT_REFILL_STOCK()
+            );
+
+        main.AddChild(
             new CONDITION_AlwaysTrue(),
             new BT_SWEEP_AND_SING()
             );
@@ -110,3 +115,17 @@ public class BT_SELL_PRODUCT : BehaviourTree
             );
     }
 }
+
+public class BT_REFILL_STOCK : BehaviourTree
+{
+    public override void OnConstruction()
+    {
+        root = new Sequence(
+            new ACTION_Deactivate("theBroom"),
+            new ACTION_Deactivate("theNotes"),
+            new ACTION_Arrive("theStorehouse"),
+            new ACTION_Utter("9", "4")
+            );
+    }
+}
+

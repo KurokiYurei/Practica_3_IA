@@ -11,6 +11,7 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
     public GameObject theSweepingPoint;
     public GameObject theStoreEntrance;
     public GameObject theFrontOfDesk;
+    public GameObject theStorehouse;
 
     public float safeRadius = 60;
     public float extraSafeRadius = 30;
@@ -78,7 +79,6 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
             default: return false;
         }
     }
-
     public void SetUtterance(int index)
     {
         utteranceLine.text = utterances[index];
