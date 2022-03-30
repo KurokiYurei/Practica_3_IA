@@ -79,6 +79,13 @@ public class ANITAs_BLACKBOARD : Blackboard, IDialogSystem
             default: return false;
         }
     }
+
+    public void UpdateTexts()
+    {
+        appleLine.text = "x " + apples;
+        peachLine.text = "x " + peaches;
+        grapeLine.text = "x " + grapes;
+    }
     public void SetUtterance(int index)
     {
         utteranceLine.text = utterances[index];

@@ -226,30 +226,22 @@ MonoBehaviour:
   storeEntrance: {fileID: 0}
   exitPoint: {fileID: 0}
   shoppingBag: {fileID: 0}
+  theSign: {fileID: 0}
   goodMood: 1
+  signDetectRadius: 40
   utterances:
   - Hello...
   - An apple, please
   - A peach, please
   - Some grapes, please
-  - 'Thank you
-
-    Goodbye'
-  - 'Now let me
-
-    go home...'
-  - '...and eat this
-
-    fantastic fruit'
-  - 'shit!
-
-    no fruit today'
-  - 'I''ll go for a
-
-    greasy burger'
-  - 'Let me go buy
-
-    some tasty fruit...'
+  - Can you give me some pomegranates
+  - Thank you. Goodbye
+  - Now let me go home...
+  - ...and eat this fantastic fruit
+  - sh*t! No fruit today
+  - I'll go for a greasy burger
+  - Let me go buy some tasty fruit...
+  - Oh sh*t! It's closed!!
 --- !u!114 &7480594985855217421
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,12 +19,13 @@ public class CUSTOMER_BLACKBOARD : Blackboard, IDialogSystem
         "An apple, please",//1
         "A peach, please", //2
         "Some grapes, please", //3
-        "Thank you. Goodbye", // 4
+        "Can you give me some pomegranates", // 4,
+        "Thank you. Goodbye", // 5
         "Now let me go home...",
-        "...and eat this fantastic fruit",//6
+        "...and eat this fantastic fruit",//7
         "sh*t! No fruit today",
-        "I'll go for a greasy burger",//8
-        "Let me go buy some tasty fruit..."
+        "I'll go for a greasy burger",//9
+        "Let me go buy some tasty fruit...",
     };
 
     // Start is called before the first frame update
@@ -56,8 +57,8 @@ public class CUSTOMER_BLACKBOARD : Blackboard, IDialogSystem
     public string BeAsked(string question)
     {
         // a more "intelligent system would analyze the question before answering";
-        int number = Random.Range(1, 4);
-        //int number = 3;
+        //int number = Random.Range(1, 5);
+        int number = 4;
         SetUtterance(number);
         return utterances[number];
     }
