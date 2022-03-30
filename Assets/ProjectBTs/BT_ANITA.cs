@@ -36,14 +36,16 @@ public class BT_ANITA : BehaviourTree
         DynamicSelector main = new DynamicSelector();
 
         main.AddChild(
+            new CONDITION_CustomerInStore("theCustomer"),
+            new BT_CUSTOMER_ENTERS_STORE()
+            );
+
+        main.AddChild(
             new CONDITION_CheckAllExistences("APPLE", "PEACH", "GRAPE"),
             new BT_REFILL_STOCK()
             );
 
-        main.AddChild(
-            new CONDITION_CustomerInStore("theCustomer"),
-            new BT_CUSTOMER_ENTERS_STORE()
-            );
+
 
         main.AddChild(
             new CONDITION_AlwaysTrue(),
