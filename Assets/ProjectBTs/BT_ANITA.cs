@@ -36,8 +36,9 @@ public class BT_ANITA : BehaviourTree
         DynamicSelector main = new DynamicSelector();
 
         main.AddChild(
-            new CONDITION_CustomerInStore(),
+            new CONDITION_CustomerInStore("theCustomer"),
             new BT_CUSTOMER_ENTERS_STORE()
+
             );
 
         main.AddChild(
@@ -67,9 +68,10 @@ public class BT_CUSTOMER_ENTERS_STORE : BehaviourTree
     public override void OnConstruction()
     {
         root = new Sequence(
+            //new ACTION_ClearUtterance(),
             new ACTION_Deactivate("theBroom"),
             new ACTION_Deactivate("theNotes"),
-            new ACTION_Utter("10", "3"),
+            new ACTION_Utter("10", "2"),
             new ACTION_Arrive("theFrontOfDesk")
 
             );
