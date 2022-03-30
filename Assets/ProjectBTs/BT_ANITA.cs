@@ -43,7 +43,7 @@ public class BT_ANITA : BehaviourTree
         main.AddChild(
             new CONDITION_CustomerInStore("theCustomer"),
             new BT_CUSTOMER_ENTERS_STORE()
-            );       
+            );
 
         main.AddChild(
             new CONDITION_AlwaysTrue(),
@@ -124,7 +124,7 @@ public class BT_REFILL_STOCK : BehaviourTree
             new ACTION_Deactivate("theBroom"),
             new ACTION_Deactivate("theNotes"),
             new ACTION_Arrive("theStorehouse"),
-            new ACTION_Utter("9","4"),
+            new ACTION_Utter("9", "4"),
             new ACTION_WaitForSeconds("2"),
             new ACTION_Refill()
             );
