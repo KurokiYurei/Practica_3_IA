@@ -57,8 +57,8 @@ public class CUSTOMER_BLACKBOARD : Blackboard, IDialogSystem
     public string BeAsked(string question)
     {
         // a more "intelligent system would analyze the question before answering";
-        //int number = Random.Range(1, 5);
-        int number = 4;
+        int number = Random.Range(1, 5);
+        //int number = 4;
         SetUtterance(number);
         return utterances[number];
     }
