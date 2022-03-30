@@ -68,11 +68,31 @@ public class BT_CUSTOMER_ENTERS_STORE : BehaviourTree
     public override void OnConstruction()
     {
         root = new Sequence(
-            //new ACTION_ClearUtterance(),
             new ACTION_Deactivate("theBroom"),
             new ACTION_Deactivate("theNotes"),
             new ACTION_Utter("10", "2"),
             new ACTION_Arrive("theFrontOfDesk")
+
+            );
+    }
+}
+
+public class BT_SEE_TO_CUSTOMER : BehaviourTree
+{
+    public override void OnConstruction()
+    {
+        root = new Sequence(
+            //new ACTION_ClearUtterance(),
+            new ACTION_EngageInDialog("theCustomer"),
+            new ACTION_AskEngaged("11", "2", "1"),
+            new Selector(
+                new Sequence(
+                    new ACTION_ParseAnswer("", ""),
+                    new ACTION_Utter()
+                    //new ACTION_Sell("")
+                    )
+                ),
+            new ACTION_DisengageFromDialog()
 
             );
     }
