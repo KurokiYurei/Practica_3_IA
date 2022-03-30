@@ -38,7 +38,6 @@ public class BT_ANITA : BehaviourTree
         main.AddChild(
             new CONDITION_CustomerInStore("theCustomer"),
             new BT_CUSTOMER_ENTERS_STORE()
-
             );
 
         main.AddChild(
@@ -46,7 +45,7 @@ public class BT_ANITA : BehaviourTree
             new BT_SWEEP_AND_SING()
             );
 
-        root = main;
+        root = new RepeatForeverDecorator(main);
     }
 }
 
@@ -71,8 +70,8 @@ public class BT_CUSTOMER_ENTERS_STORE : BehaviourTree
             new ACTION_Deactivate("theBroom"),
             new ACTION_Deactivate("theNotes"),
             new ACTION_Utter("10", "2"),
-            new ACTION_Arrive("theFrontOfDesk")
-
+            new ACTION_Arrive("theFrontOfDesk"),
+            new BT_SEE_TO_CUSTOMER()
             );
     }
 }
@@ -83,17 +82,16 @@ public class BT_SEE_TO_CUSTOMER : BehaviourTree
     {
         root = new Sequence(
             new ACTION_EngageInDialog("theCustomer"),
-            new ACTION_AskEngaged("11", "2", "1"),
+            new ACTION_AskEngaged("11", "2", "theAnswer"),
             new Selector(
                 new Sequence(
-                    new ACTION_ParseAnswer("", ""),
-                    new ACTION_TellEngaged("13", "3")
-                    //new ACTION_Sell("")
+                    new ACTION_ParseAnswer("theAnswer", "theProduct"),
+                    new ACTION_TellEngaged("13", "3"),
+                    new BT_SELL_PRODUCT()
                     ),
                 new ACTION_TellEngaged("12", "3")
                 ),
             new ACTION_DisengageFromDialog()
-
             );
     }
 }
@@ -104,11 +102,11 @@ public class BT_SELL_PRODUCT : BehaviourTree
     {
         root = new Selector(
             new Sequence(
-                new CONDITION_CheckExistences(""),
-                new ACTION_Sell(""),
+                new CONDITION_CheckExistences("theProduct"),
+                new ACTION_Sell("theProduct"),
                 new ACTION_TellEngaged("14", "3")
                 ),
-            new ACTION_TellEngaged("9", "3")
+            new ACTION_TellEngaged("15", "3")
             );
     }
 }

@@ -26,7 +26,7 @@ public class CUSTOMER_BLACKBOARD : Blackboard, IDialogSystem
         "I'll go for a greasy burger",//8
         "Let me go buy some tasty fruit..."
     };
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +36,7 @@ public class CUSTOMER_BLACKBOARD : Blackboard, IDialogSystem
         storeEntrance = GameObject.Find("storeEntrance");
         exitPoint = GameObject.Find("exitPoint");
         shoppingBag = transform.Find("BAG").gameObject;
-        
+
         GetComponent<DieNear>().cemetery = exitPoint;
     }
 
@@ -84,7 +84,7 @@ public class CUSTOMER_BLACKBOARD : Blackboard, IDialogSystem
         return false; // returning false means partner has refused.
     }
 
-    public bool BeEngagedInDialog (IDialogSystem partner)
+    public bool BeEngagedInDialog(IDialogSystem partner)
     {
         // someone wants to talk to you. You may refuse or accept
         // this agent always accepts
